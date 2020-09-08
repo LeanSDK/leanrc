@@ -83,6 +83,9 @@ module.exports = (Module)->
     @public routerName: String,
       default: APPLICATION_ROUTER
 
+    @public defaultRenderer: String,
+      default: 'json'
+
     @public @static compose: FuncG([ListG(Function), ListG MaybeG ListG Function], AsyncFunctionT),
       default: (middlewares, handlers)->
         unless _.isArray middlewares
@@ -354,16 +357,31 @@ module.exports = (Module)->
       default: (ctx, aoData, resource, opts)->
         if opts.action is 'create'
           ctx.status = 201
-        unless ctx.headers?.accept?
-          yield return
-        switch (vsFormat = ctx.accepts @responseFormats)
-          when no
-          else
-            if @["#{vsFormat}RendererName"]?
-              voRenderer = @rendererFor vsFormat
-              voRendered = yield voRenderer
-                .render ctx, aoData, resource, opts
-              ctx.body = voRendered
+        # unless ctx.headers?.accept?
+        #   yield return
+        # switch (vsFormat = ctx.accepts @responseFormats)
+        #   when no
+        #   else
+        #     if @["#{vsFormat}RendererName"]?
+        #       voRenderer = @rendererFor vsFormat
+        #       voRendered = yield voRenderer
+        #         .render ctx, aoData, resource, opts
+        #       ctx.body = voRendered
+        # yield return
+
+        if ctx.headers?.accept?
+          switch (vsFormat = ctx.accepts @responseFormats)
+            when no
+            else
+              if @["#{vsFormat}RendererName"]?
+                voRenderer = @rendererFor vsFormat
+        else
+          if @["#{@defaultRenderer}RendererName"]?
+            voRenderer = @rendererFor @defaultRenderer
+        if voRenderer?
+          voRendered = yield voRenderer
+            .render ctx, aoData, resource, opts
+          ctx.body = voRendered
         yield return
 
     @public defineRoutes: Function,
