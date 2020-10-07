@@ -4,7 +4,7 @@ sinon = require 'sinon'
 Feed = require 'feed'
 # httpErrors = require 'http-errors'
 LeanRC = require.main.require 'lib'
-RC = require 'RC'
+RC = require '@leansdk/rc/lib'
 {
   Facade
   Switch

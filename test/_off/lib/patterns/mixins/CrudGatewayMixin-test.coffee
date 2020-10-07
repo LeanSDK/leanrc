@@ -3,7 +3,7 @@ sinon = require 'sinon'
 _ = require 'lodash'
 joi = require 'joi'
 LeanRC = require.main.require 'lib'
-RC = require 'RC'
+RC = require '@leansdk/rc/lib'
 { co } = RC::Utils
 
 describe 'CrudGatewayMixin', ->

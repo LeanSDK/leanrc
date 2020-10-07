@@ -3,9 +3,9 @@ sinon = require 'sinon'
 LeanRC = require.main.require 'lib'
 { co } = LeanRC::Utils
 
-atob = (str) -> new Buffer(str, 'base64').toString 'binary'
+atob = (str) -> Buffer.from(str, 'base64').toString 'binary'
 btoa = (str) ->
-  buffer = if str instanceof Buffer then str else new Buffer str.toString(), 'binary'
+  buffer = if str instanceof Buffer then str else Buffer.from str.toString(), 'binary'
   buffer.toString 'base64'
 
 b64_to_utf8 = (str) -> decodeURIComponent escape atob str

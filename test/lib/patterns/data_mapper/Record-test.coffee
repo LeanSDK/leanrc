@@ -1,7 +1,7 @@
 { expect, assert } = require 'chai'
 sinon = require 'sinon'
 _ = require 'lodash'
-RC = require 'RC'
+RC = require '@leansdk/rc/lib'
 LeanRC = require.main.require 'lib'
 {
   FuncG, SubsetG

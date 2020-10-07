@@ -1,7 +1,8 @@
+--trace-deprecation
 --require coffeescript/register
 --reporter spec
 --check-leaks
---growl
+--full-trace
 test/lib/patterns/utils/*.coffee
 test/lib/core/*.coffee
 test/lib/patterns/facade/*.coffee

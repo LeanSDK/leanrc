@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with LeanRC.  If not, see <https://www.gnu.org/licenses/>.
 
-RC        = require 'RC'
+RC        = require '@leansdk/rc/lib'
 joi       = require 'joi'
 statuses  = require 'statuses'
 moment    = require 'moment'

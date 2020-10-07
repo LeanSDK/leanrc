@@ -1,6 +1,6 @@
 { expect, assert } = require 'chai'
 sinon = require 'sinon'
-RC = require 'RC'
+RC = require '@leansdk/rc/lib'
 LeanRC = require.main.require 'lib'
 { co } = LeanRC::Utils
 

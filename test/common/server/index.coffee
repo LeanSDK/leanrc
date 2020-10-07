@@ -3,7 +3,7 @@ URL = require 'url'
 querystring = require 'querystring'
 _ = require 'lodash'
 inflect = do require 'i'
-RC = require 'RC'
+RC = require '@leansdk/rc/lib'
 
 module.exports = (options) ->
 
